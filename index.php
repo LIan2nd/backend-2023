@@ -11,12 +11,10 @@
 </head>
 <body>
   <h3>Semua Mahasiswa : </h3>
-  <p><?php 
-    $itteration = 1;
-    foreach($myArr as $allArr) {
-      echo $itteration, ". ", $allArr, "<br>";
-      $itteration++;
-    }
-  ?></p>
+  <ol>
+    <?php foreach($myArr as $allArr) { ?>
+      <li><?= $allArr; ?></li>
+    <?php } ?>
+  </ol>
 </body>
 </html>
