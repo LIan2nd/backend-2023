@@ -36,6 +36,10 @@ class Animal
     # parameter: index dan hewan baru
     public function update($index, $newAnimal)
     {
+      if(!isset($this->animals[$index])) {
+        throw new Exception("Index tidak valid");
+        
+      }
       $this->animals[$index] = $newAnimal;
     }
 
@@ -43,6 +47,10 @@ class Animal
     # parameter: index
     public function destroy($index)
     {
+      if(!isset($this->animals[$index])) {
+        throw new Exception("Index tidak valid");
+        
+      }
       unset($this->animals[$index]);
         # gunakan method unset atau array_splice untuk menghapus data array
     }
