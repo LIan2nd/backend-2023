@@ -37,7 +37,7 @@ class Animal
     public function update($index, $newAnimal)
     {
       if(!isset($this->animals[$index])) {
-        throw new Exception("Index tidak valid");
+        throw new Exception("Tidak ada index $index");
         
       }
       $this->animals[$index] = $newAnimal;
@@ -48,7 +48,7 @@ class Animal
     public function destroy($index)
     {
       if(!isset($this->animals[$index])) {
-        throw new Exception("Index tidak valid");
+        throw new Exception("Tidak ada index $index");
         
       }
       unset($this->animals[$index]);
@@ -72,6 +72,7 @@ echo "<br>";
 
 echo "Update - Mengupdate hewan <br>";
 $animal->update(0, 'Kucing Anggora');
+$animal->update(10, 'Kucing Anggora');
 $animal->index();
 echo "<br>";
 
