@@ -41,7 +41,7 @@ class StudentsController extends Controller
             'data' => $student
         ];
 
-        return response()->json($data, 200);
+        return response()->json($data, 201);
     }
 
     /**
