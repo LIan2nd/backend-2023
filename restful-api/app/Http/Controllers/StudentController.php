@@ -49,7 +49,22 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $student = Student::find($id);
+
+        if (!$student) {
+            $data = [
+                'message' => 'Student not found'
+            ];
+
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'message' => 'Show student',
+            'data' => $student
+        ];
+
+        return response()->json($data, 200);
     }
 
     /**
@@ -57,7 +72,32 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $student = Student::find($id);
+
+        if (!$student) {
+            $data = [
+                'message' => 'Student not found'
+            ];
+
+            return response()->json($data, 404);
+        }
+
+        $input = [
+            'name' => $request->name,
+            'nim' => $request->nim,
+            'email' => $request->email,
+            'jurusan' => $request->jurusan
+        ];
+
+        $student->update($input);
+
+        $data = [
+            'message' => 'Student successfully edited',
+            'data' => $student
+        ];
+
+        return response()->json($data, 201);
     }
 
     /**
@@ -65,6 +105,23 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::find($id);
+
+        if (!$student) {
+            $data = [
+                'message' => 'Student not found'
+            ];
+
+            return response()->json($data, 404);
+        }
+
+        Student::destroy($id);
+        $students = Student::all();
+        $data = [
+            'message' => 'Student was successfully deleted',
+            'data' => $students
+        ];
+
+        return response()->json($data, 200);
     }
 }
