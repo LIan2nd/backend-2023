@@ -84,10 +84,10 @@ class StudentController extends Controller
         }
 
         $input = [
-            'name' => $request->name,
-            'nim' => $request->nim,
-            'email' => $request->email,
-            'jurusan' => $request->jurusan
+            'name' => $request->name ?? $student->name,
+            'nim' => $request->nim ?? $student->nim,
+            'email' => $request->email ?? $student->email,
+            'jurusan' => $request->jurusan ?? $student->jurusan
         ];
 
         $student->update($input);
