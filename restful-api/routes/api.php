@@ -19,4 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Gunain yang ini karena lebih simple ajaa
 Route::resource('/students', StudentController::class)->except('create', 'edit');
+
+# Method GET
+// Route::get('/students', [StudentController::class, 'index']);
+// Route::get('/students/{id}', [StudentController::class, 'show']);
+
+# Method POST
+// Route::post('/students', [StudentController::class, 'store']);
+// Route::put('/students/{id}', [StudentController::class, 'update']);
+// Route::delete('/students/{id}', [StudentController::class, 'destroy']);

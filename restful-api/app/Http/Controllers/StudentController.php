@@ -10,6 +10,7 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // Done
     public function index()
     {
         $students = Student::all();
@@ -25,6 +26,7 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // Done
     public function store(Request $request)
     {
         $input = [
@@ -47,6 +49,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
+    // Done
     public function show(string $id)
     {
         $student = Student::find($id);
@@ -70,6 +73,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // Done
     public function update(Request $request, string $id)
     {
 
@@ -103,6 +107,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    // Done
     public function destroy(string $id)
     {
         $student = Student::find($id);
