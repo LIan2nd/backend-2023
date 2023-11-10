@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Gunain yang ini karena lebih simple ajaa
-Route::resource('/students', StudentController::class)->except('create', 'edit');
+Route::resource('/students', StudentController::class)->except('create', 'edit')->middleware('auth:sanctum');
 
-# Method GET
-// Route::get('/students', [StudentController::class, 'index']);
-// Route::get('/students/{id}', [StudentController::class, 'show']);
+//  Route::middleware(['auth:sacntum'])->group(function () {
+//      # Method GET
+//      Route::get('/students', [StudentController::class, 'index']);
+//      Route::get('/students/{id}', [StudentController::class, 'show']);
 
-# Method POST
-// Route::post('/students', [StudentController::class, 'store']);
-// Route::put('/students/{id}', [StudentController::class, 'update']);
-// Route::delete('/students/{id}', [StudentController::class, 'destroy']);
+//      # Method POST
+//      Route::post('/students', [StudentController::class, 'store']);
+//      Route::put('/students/{id}', [StudentController::class, 'update']);
+//      Route::delete('/students/{id}', [StudentController::class, 'destroy']);
+// }
+
+
+// Otentikasi (register & login)
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);

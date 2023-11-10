@@ -29,14 +29,15 @@ class StudentController extends Controller
     // Done
     public function store(Request $request)
     {
-        $input = [
-            'name' => $request->name,
-            'nim' => $request->nim,
-            'email' => $request->email,
-            'jurusan' => $request->jurusan
-        ];
+        // Membuat validasi
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'nim' => 'numeric|required',
+            'email' => 'email|required',
+            'jurusan' => 'required'
+        ]);
 
-        $student = Student::create($input);
+        $student = Student::create($validatedData);
 
         $data = [
             'message' => 'Student is created succesfully',
@@ -112,6 +113,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
+        // Menghandle data tidak ada
         if (!$student) {
             $data = [
                 'message' => 'Student not found'
